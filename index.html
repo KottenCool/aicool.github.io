@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Sleek Blue Website</title>
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #004b8d, #00bcd4);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    h1, h2, p {
+      text-align: center;
+    }
+
+    /* Animation Classes */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .animated {
+      animation: fadeIn 1s ease-in-out, slideIn 1s ease-in-out;
+    }
+
+    /* Container Styling */
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Button Styling */
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+      background: #0056b3;
+      transform: scale(1.1);
+    }
+
+    /* Random Content Styling */
+    .content {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container animated">
+    <h1>Welcome to the Random Sleek Blue Website</h1>
+    <p>This website generates random content with sleek blue-themed animations.</p>
+    <button id="generate">Generate Random Content</button>
+    <div class="content" id="randomContent"></div>
+  </div>
+
+  <script>
+    // Function to generate random content
+    function generateRandomContent() {
+      const contentDiv = document.getElementById('randomContent');
+      contentDiv.innerHTML = ''; // Clear previous content
+
+      // Generate random elements
+      const randomText = `Random Text: ${Math.random().toString(36).substring(7)}`;
+      const randomImage = `https://picsum.photos/seed/${Math.random()}/400/300`;
+      const randomHeading = `Random Heading: ${Math.random().toString(36).substring(7)}`;
+
+      // Create elements
+      const heading = document.createElement('h2');
+      heading.textContent = randomHeading;
+
+      const paragraph = document.createElement('p');
+      paragraph.textContent = randomText;
+
+      const image = document.createElement('img');
+      image.src = randomImage;
+      image.alt = 'Random Image';
+
+      // Append elements to the content div
+      contentDiv.appendChild(heading);
+      contentDiv.appendChild(paragraph);
+      contentDiv.appendChild(image);
+
+      // Add animation class
+      contentDiv.classList.add('animated');
+    }
+
+    // Event listener for the button
+    document.getElementById('generate').addEventListener('click', generateRandomContent);
+
+    // Initial content generation on page load
+    window.onload = generateRandomContent;
+  </script>
+</body>
+</html>
